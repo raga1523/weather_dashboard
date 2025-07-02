@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            color: #ffffff;
+            padding-top: 20px;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            color: #0f2027;
+            font-weight: 600;
+        }
+
+        .form-control {
+            border: 1px solid #ccc;
+        }
+
+        .btn-success {
+            background-color: #00B4D8;
+            border-color: #00B4D8;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-success:hover {
+            background-color: #0096C7;
+            border-color: #0096C7;
+        }
+
+        .card {
+            background-color: #f8f9fa;
+            color: #0f2027;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        h2,
+        h3 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .table thead {
+            background-color: #288cad;
+            color: #ffffff;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #bae0e9;
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        .table tbody td {
+            color: #0f2027;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <!-- Navbar with Search -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+        <a class="navbar-brand" href="#">WeatherApp</a>
+        <form id="searchForm" class="form-inline ml-auto">
+            <input class="form-control mr-2" type="search" id="cityInput" placeholder="Enter city" required />
+            <button class="btn btn-info" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <!-- Main Weather Display -->
+    <div class="container my-4 ">
+        <div class="card p-3 ">
+            <h1 id="cityName" class="card-title text-center mb-4">--</h1>
+            <div class="row">
+                <div class="card text-centre w-50 p-3 shadow">
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-info">
+                            <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Temperature</th>
+                                <td id="temp">--</td>
+                            </tr>
+                            <tr>
+                                <th>Condition</th>
+                                <td id="condition">--</td>
+                            </tr>
+                            <tr>
+                                <th>Humidity</th>
+                                <td id="humidity">--</td>
+                            </tr>
+
+                            <tr>
+                                <th>Wind Speed</th>
+                                <td id="wind">--</td>
+                            </tr>
+                            <tr>
+                                <th>Wind Direction</th>
+                                <td id="wind_dir">--</td>
+                            </tr>
+                            <tr>
+                                <th>Sunrise</th>
+                                <td id="sunrise">--</td>
+                            </tr>
+                            <tr>
+                                <th>Sunset</th>
+                                <td id="sunset">--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card text-centre w-50 p-3 shadow">
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-info">
+                            <tr>
+                                <th scope="col">Next 7 Days</th>
+                                <th scope="col">Highest temp</th>
+                                <th scope="col">Lowest temp</th>
+                                <th scope="col">General weather</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="d1day">--</td>
+                                <td id="d1hightemp">--</td>
+                                <td id="d1lowtemp">--</td>
+                                <td id="d1cond">--</td>
+                            </tr>
+                            <tr>
+                                <td id="d2day">--</td>
+                                <td id="d2hightemp">--</td>
+                                <td id="d2lowtemp">--</td>
+                                <td id="d2cond">--</td>
+                            </tr>
+                            <tr>
+                                <td id="d3day">--</td>
+                                <td id="d3hightemp">--</td>
+                                <td id="d3lowtemp">--</td>
+                                <td id="d3cond">--</td>
+                            </tr>
+                            <tr>
+                                <td id="d4day">--</td>
+                                <td id="d4hightemp">--</td>
+                                <td id="d4lowtemp">--</td>
+                                <td id="d4cond">--</td>
+                            </tr>
+                            <tr>
+                                <td id="d5day">--</td>
+                                <td id="d5hightemp">--</td>
+                                <td id="d5lowtemp">--</td>
+                                <td id="d5cond">--</td>
+                            </tr>
+                            <tr>
+                                <td id="d6day">--</td>
+                                <td id="d6hightemp">--</td>
+                                <td id="d6lowtemp">--</td>
+                                <td id="d6cond">--</td>
+                            </tr>
+                            <tr>
+                                <td id="d7day">--</td>
+                                <td id="d7hightemp">--</td>
+                                <td id="d7lowtemp">--</td>
+                                <td id="d7cond">--</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
